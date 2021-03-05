@@ -17,6 +17,11 @@ Ticket attributes:
 8.	Time estimated
 9.  Created on date
 
+IMPLEMENT
+a. User creation
+b. Roles assignment
+c. Roles delete
+d. User soft delete
 
 User actions:
 1.	Create ticket

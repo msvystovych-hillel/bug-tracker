@@ -1,11 +1,14 @@
 package com.example.demo.repository;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class BasicConnectionPool implements ConnectionPool {
 
     private final String url;
@@ -21,6 +24,7 @@ public class BasicConnectionPool implements ConnectionPool {
         List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
         for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
             pool.add(createConnection(url, user, password));
+            log.info("Pool size is {}", pool.size());
         }
         return new BasicConnectionPool(url, user, password, pool);
     }
@@ -54,6 +58,7 @@ public class BasicConnectionPool implements ConnectionPool {
 
     @Override
     public boolean releaseConnection(Connection connection) {
+        log.info("Returning a connection to the pool");
         connectionPool.add(connection);
         return usedConnections.remove(connection);
     }
@@ -89,6 +94,7 @@ public class BasicConnectionPool implements ConnectionPool {
 
     @Override
     public void shutdown() throws SQLException {
+        log.info("Returning a connection to the pool");
         usedConnections.forEach(this::releaseConnection);
         for (Connection c : connectionPool) {
             c.close();

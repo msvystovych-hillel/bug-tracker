@@ -31,8 +31,7 @@ public class TestConnectionPoolRepository {
                 id = resultSet.getLong("cc");
             }
 
-
-            } catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             try {
                 con.close();

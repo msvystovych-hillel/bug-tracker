@@ -24,7 +24,6 @@ public class BasicConnectionPool implements ConnectionPool {
         List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
         for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
             pool.add(createConnection(url, user, password));
-            log.info("Pool size is {}", pool.size());
         }
         return new BasicConnectionPool(url, user, password, pool);
     }

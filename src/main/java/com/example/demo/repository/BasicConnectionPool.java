@@ -52,6 +52,7 @@ public class BasicConnectionPool implements ConnectionPool {
         }
 
         usedConnections.add(connection);
+        log.info("Getting a connection from pool {}", connection);
         return connection;
     }
 

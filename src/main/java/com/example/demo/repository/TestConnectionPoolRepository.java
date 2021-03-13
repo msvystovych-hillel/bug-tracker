@@ -20,10 +20,12 @@ public class TestConnectionPoolRepository {
 
     public long count() {
         long id = -1L;
+        BasicConnectionPool basicConnectionPool = null;
         Connection con = null;
         try {
 
-            con = BasicConnectionPool.create(url, user, password).getConnection();
+            basicConnectionPool = BasicConnectionPool.create(url, user, password);
+            con = basicConnectionPool.getConnection();
             PreparedStatement pr = con.prepareStatement("select count(*) as cc from user");
 //            con.setAutoCommit();
 //            con.setReadOnly();
@@ -43,12 +45,14 @@ public class TestConnectionPoolRepository {
             }
             return id;
 
+        } finally {
+            basicConnectionPool.releaseConnection(con);
         }
-        try {
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            con.close();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         return id;
     }
 }

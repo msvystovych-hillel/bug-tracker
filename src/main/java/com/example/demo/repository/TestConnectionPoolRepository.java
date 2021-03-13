@@ -25,6 +25,9 @@ public class TestConnectionPoolRepository {
 
             con = BasicConnectionPool.create(url, user, password).getConnection();
             PreparedStatement pr = con.prepareStatement("select count(*) as cc from user");
+//            con.setAutoCommit();
+//            con.setReadOnly();
+//            con.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
             ResultSet resultSet = pr.executeQuery();
 
             while (resultSet.next()) {

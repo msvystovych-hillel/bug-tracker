@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.persistence.LockModeType;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class TestJpaRepository {
 
     @Transactional
     public List<User> getAllUsers() {
-        return entityManager.createQuery("from User", User.class).getResultList();
+        TypedQuery<User> fromUser = entityManager.createQuery("from User", User.class);
+        fromUser.setLockMode(LockModeType.PESSIMISTIC_READ);
+        return fromUser.getResultList();
     }
 }

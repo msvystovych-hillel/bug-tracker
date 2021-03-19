@@ -4,12 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @AllArgsConstructor
@@ -17,16 +14,11 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "user")
-public class User {
-
+public class Role {
     @Id
     @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
     private String name;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
-    private Role role;
 }

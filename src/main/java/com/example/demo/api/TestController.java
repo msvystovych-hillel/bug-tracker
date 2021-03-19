@@ -1,25 +1,24 @@
 package com.example.demo.api;
 
-import com.example.demo.repository.TestConnectionPoolRepository;
+import com.example.demo.model.User;
+import com.example.demo.repository.TestJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class TestController {
 
-//    @Autowired
-//    private TestRepository testRepository;
-
     @Autowired
-    private TestConnectionPoolRepository testConnectionPoolRepository;
-
+    private TestJpaRepository testJpaRepository;
 
 
     @GetMapping("/test")
-    public long test() {
+    public List<User> test() {
 //        testRepository.testInsert();
 //        return testRepository.count();
-        return testConnectionPoolRepository.count();
+        return testJpaRepository.getAllUsers();
     }
 }

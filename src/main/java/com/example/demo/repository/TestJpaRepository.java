@@ -22,7 +22,7 @@ public class TestJpaRepository {
     @Transactional
     public List<User> getAllUsers() {
         TypedQuery<User> fromUser = entityManager.createQuery("from User", User.class);
-        fromUser.setLockMode(LockModeType.PESSIMISTIC_READ);
+        fromUser.setLockMode(LockModeType.PESSIMISTIC_WRITE);
         return fromUser.getResultList();
     }
 }

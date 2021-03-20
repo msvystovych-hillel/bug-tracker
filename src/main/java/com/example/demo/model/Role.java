@@ -53,8 +53,4 @@ public class Role {
 //    Level 1 Session
 //    Level 2 SessionFactory
 //    Level 3 EhCache
-
-//    Criteria API
-//            Projections
-//JPA EntityGraph
 }

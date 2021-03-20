@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.TestJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,12 @@ public class TestController {
 //        testRepository.testInsert();
 //        return testRepository.count();
         return testJpaRepository.getAllUsers();
+    }
+
+    @GetMapping("/roles")
+    public List<Role> getAllRoles() {
+//        testRepository.testInsert();
+//        return testRepository.count();
+        return testJpaRepository.getAllRoles();
     }
 }

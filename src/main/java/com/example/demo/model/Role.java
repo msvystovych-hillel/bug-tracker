@@ -3,6 +3,8 @@ package com.example.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.OrderBy;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,6 +34,11 @@ public class Role {
     @JoinTable(name = "role_to_ap",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "action_point_id"))
+    @BatchSize(size = 10)
+    @OrderBy(clause = "ID DESC")
+//    @Fetch(FetchMode.SUBSELECT)
+//    @Fetch(FetchMode.JOIN)
+//    @Fetch(FetchMode.SELECT)
     private List<ActionPoint> actionPoints;
 
 //    @OrderColumn

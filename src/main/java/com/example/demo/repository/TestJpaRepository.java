@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,13 @@ public class TestJpaRepository {
     @Transactional
     public List<User> getAllUsers() {
         TypedQuery<User> fromUser = entityManager.createQuery("from User", User.class);
+        fromUser.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+        return fromUser.getResultList();
+    }
+
+    @Transactional
+    public List<Role> getAllRoles() {
+        TypedQuery<Role> fromUser = entityManager.createQuery("from Role", Role.class);
         fromUser.setLockMode(LockModeType.PESSIMISTIC_WRITE);
         return fromUser.getResultList();
     }

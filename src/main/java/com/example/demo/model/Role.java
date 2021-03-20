@@ -34,4 +34,20 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "action_point_id"))
     private List<ActionPoint> actionPoints;
 
+//    @OrderColumn
+//    @Transient
+//    @Sort
+//    @OrderBy
+//    @Where
+
+//    Inheritance
+
+//    Caching:
+//    Level 1 Session
+//    Level 2 SessionFactory
+//    Level 3 EhCache
+
+//    Criteria API
+//            Projections
+//JPA EntityGraph
 }

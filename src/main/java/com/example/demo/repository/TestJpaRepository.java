@@ -29,4 +29,13 @@ public class TestJpaRepository {
         fromUser.setLockMode(LockModeType.PESSIMISTIC_WRITE);
         return fromUser.getResultList();
     }
+
+    @Transactional
+    public void saveUser() {
+        User userToCreate = new User();
+        userToCreate.setName("New User");
+        Role role = entityManager.find(Role.class, 1L);
+        userToCreate.setRole(role);
+        entityManager.persist(userToCreate);
+    }
 }

@@ -18,8 +18,6 @@ public class TestController {
 
     @GetMapping("/test")
     public List<User> test() {
-//        testRepository.testInsert();
-//        return testRepository.count();
         return testJpaRepository.getAllUsers();
     }
 
@@ -28,5 +26,10 @@ public class TestController {
 //        testRepository.testInsert();
 //        return testRepository.count();
         return testJpaRepository.getAllRoles();
+    }
+
+    @GetMapping("/save-user")
+    public void saveUser() {
+        testJpaRepository.saveUser();
     }
 }

@@ -13,9 +13,12 @@ import java.util.Map;
 @Repository
 @Slf4j
 public class TestRepository {
+
+    //connection
     @Autowired
     private DataSource dataSource;
 
+    //queries
     @Autowired
     private JdbcTemplate jdbcTemplate;
 

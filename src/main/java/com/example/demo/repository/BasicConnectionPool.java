@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Connection pool implementation (as Hikari)
+
 @Slf4j
 public class BasicConnectionPool implements ConnectionPool {
 

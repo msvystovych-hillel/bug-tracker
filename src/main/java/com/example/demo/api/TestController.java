@@ -39,6 +39,7 @@ public class TestController {
 
     @GetMapping("/context")
     public void testContext() {
-        testApplicationContext.test();
+//        testApplicationContext.testExistingAppContext();
+        testApplicationContext.testNewAppContext();
     }
 }

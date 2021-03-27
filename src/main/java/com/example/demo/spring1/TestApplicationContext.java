@@ -24,6 +24,11 @@ public class TestApplicationContext {
 
     public void testNewAppContext() {
         ApplicationContext context = new AnnotationConfigApplicationContext(SomeConfig.class);
+        context.getParent();
+        for (String s : context.getBeanDefinitionNames()) {
+            log.info("Bean definition is {}", s);
+        }
+
         DataSource dataSourceFromSomeConfig = context.getBean(DataSource.class);
     }
 }

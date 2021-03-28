@@ -40,6 +40,8 @@ public class TestController {
     @GetMapping("/context")
     public void testContext() {
 //        testApplicationContext.testExistingAppContext();
-        testApplicationContext.testNewAppContext();
+//        testApplicationContext.testNewAppContext();
+//        testApplicationContext.testBeanScopePrototype();
+//        testApplicationContext.testBeanScopeSingleton();
     }
 }

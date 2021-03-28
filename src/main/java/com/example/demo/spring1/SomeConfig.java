@@ -8,14 +8,10 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SomeConfig {
-//    @Value("${spring.datasource.url}")
-    private String url = "jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-//    @Value("${spring.datasource.username}")
-    private String username = "root";
-//    @Value("${spring.datasource.password}")
-    private String password = "my-secret-pw";
-//    @Value("${spring.datasource.driverClassName}")
-    private String driverClassName = "com.mysql.cj.jdbc.Driver";
+    private final String url = "jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private final String username = "root";
+    private final String password = "my-secret-pw";
+    private final String driverClassName = "com.mysql.cj.jdbc.Driver";
 
     @Bean
     public DataSource dataSource() {

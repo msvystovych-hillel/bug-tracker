@@ -16,7 +16,7 @@ public class TestController {
 
 
 
-    @GetMapping("/test")
+    @GetMapping("/test1")
     public long test() {
 //        testRepository.testInsert();
 //        return testRepository.count();

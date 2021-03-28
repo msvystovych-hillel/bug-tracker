@@ -9,8 +9,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
-		DataOutputController controller = new DataOutputController();
-		controller.outputData();
+		//DataOutputController controller = new DataOutputController();
+		//controller.outputData();
 
 	}
 }

@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.data.User;
+import com.example.demo.repository.AbstractRepository;
 import com.example.demo.repository.JdbcRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -11,8 +14,10 @@ import java.util.List;
 @Controller
 public class DataOutputController {
 
-    JdbcRepositoryImpl jdbcRepository = new JdbcRepositoryImpl();
+    @Autowired
+    AbstractRepository jdbcRepository;
 
+    @GetMapping("/test")
     public void outputData(){
         List<User> users = jdbcRepository.getAll();
 

@@ -43,6 +43,6 @@ public class JdbcRepositoryImpl implements AbstractRepository {
     @Override
     public void create() {
 
-       jdbcTemplate.update("INSERT INTO user_table " + "VALUES (5,'Maria', 'Balter', 'maria.balter@mail.com')" );
+       jdbcTemplate.update("INSERT INTO user_table " + "VALUES (100,'Maria', 'Balter', 'maria.balter@mail.com')" );
     }
 }

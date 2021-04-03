@@ -18,7 +18,8 @@ public class JdbcRepositoryImpl implements AbstractRepository {
     //RowMapper is callback i. (callee invokes code inside caller). Caller implements i., callee - invokes one of its methods
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM user_table";
+    private static final String ADD_USER_QUERY = "INSERT INTO user_table " + "VALUES (19,'Joe', 'Dolter', 'joe.dolter@mail.com')";
 
 
     //mapper
@@ -34,15 +35,13 @@ public class JdbcRepositoryImpl implements AbstractRepository {
 
     @Override
     public List<User> getAll() {
-        List<User> users = jdbcTemplate.query("SELECT * FROM user_table", mapper);
-        return users;
+        return jdbcTemplate.query(SELECT_ALL_QUERY, mapper);
     }
 
     // PostConstruct - called once, after bean initialization. can't be static. Populates db.
     @PostConstruct
     @Override
     public void create() {
-
-       jdbcTemplate.update("INSERT INTO user_table " + "VALUES (100,'Maria', 'Balter', 'maria.balter@mail.com')" );
+        jdbcTemplate.update(ADD_USER_QUERY);
     }
 }

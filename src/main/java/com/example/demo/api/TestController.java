@@ -55,8 +55,13 @@ public class TestController {
 //        testApplicationContext.testBeanScopeSingleton();
     }
 
-    @GetMapping("/test-exception")
+    @GetMapping("/test-not-found-exception")
     public void testException() {
-        testJpaRepository.testException();
+        testJpaRepository.testNotFoundException();
+    }
+
+    @GetMapping("/test-exists-exception")
+    public void testNotFound() {
+        testJpaRepository.testExistsException();
     }
 }

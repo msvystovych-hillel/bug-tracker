@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.exception.AbstractNotFoundException;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,8 @@ public class TestJpaRepository {
         Role role = entityManager.find(Role.class, 1L);
         userToCreate.setRole(role);
         entityManager.persist(userToCreate);
+    }
+    public void testException() {
+        throw new AbstractNotFoundException("something.not.found.exception", "Something not found");
     }
 }

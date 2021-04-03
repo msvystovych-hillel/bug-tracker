@@ -54,4 +54,9 @@ public class TestController {
 //        testApplicationContext.testBeanScopePrototype();
 //        testApplicationContext.testBeanScopeSingleton();
     }
+
+    @GetMapping("/test-exception")
+    public void testException() {
+        testJpaRepository.testException();
+    }
 }

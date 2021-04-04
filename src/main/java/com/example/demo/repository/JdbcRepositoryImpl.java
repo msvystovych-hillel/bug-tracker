@@ -19,7 +19,9 @@ public class JdbcRepositoryImpl implements AbstractRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private static final String SELECT_ALL_QUERY = "SELECT * FROM user_table";
-    private static final String ADD_USER_QUERY = "INSERT INTO user_table " + "VALUES (19,'Joe', 'Dolter', 'joe.dolter@mail.com')";
+    private static final String ADD_USER_QUERY = "INSERT INTO user_table " +
+            "(id, first_name, last_name, email) VALUES " +
+            "(?,?,?,?);";
 
 
     //mapper
@@ -42,6 +44,6 @@ public class JdbcRepositoryImpl implements AbstractRepository {
     @PostConstruct
     @Override
     public void create() {
-        jdbcTemplate.update(ADD_USER_QUERY);
+        jdbcTemplate.update(ADD_USER_QUERY, 20, "Bill", "Musk", "bill.musk@mail.com");
     }
 }

@@ -20,10 +20,7 @@ public class DataOutputController {
     @GetMapping("/test")
     public void outputData(){
         List<User> users = jdbcRepository.getAll();
-
-        for (User user : users) {
-            System.out.println(user);
-        }
+        users.forEach(System.out::println);
 
     }
 

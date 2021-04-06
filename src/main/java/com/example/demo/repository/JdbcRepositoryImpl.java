@@ -45,7 +45,7 @@ public class JdbcRepositoryImpl implements AbstractRepository {
         //TODO User as a parameter
         String addUserQuery = "INSERT INTO user_table (id, first_name, last_name, email) VALUES " +
                 "(?,?,?,?);";
-        jdbcTemplate.update(addUserQuery, 24, "Bill", "Musk", "bill.musk@mail.com");
+        jdbcTemplate.update(addUserQuery, 26, "Bill", "Musk", "bill.musk@mail.com");
     }
 
     @Override

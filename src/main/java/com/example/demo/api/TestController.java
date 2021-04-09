@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.aop.SomeService;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.TestJpaRepository;
@@ -21,6 +22,9 @@ public class TestController {
 
     @Autowired
     private TestApplicationContext testApplicationContext;
+
+    @Autowired
+    private SomeService someService;
 
 
     @ApiOperation(value = "Places a new transaction on the system.", notes = "Creates a new transaction in the system. See the schema of the Transaction parameter for more information ", tags = {"transaction"})
@@ -63,5 +67,10 @@ public class TestController {
     @GetMapping("/test-exists-exception")
     public void testNotFound() {
         testJpaRepository.testExistsException();
+    }
+
+    @GetMapping("/test-execution-time")
+    public void testExecutionTime() throws InterruptedException {
+        someService.serve();
     }
 }

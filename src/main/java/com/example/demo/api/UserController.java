@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 //    {
-//        "email": "string@mail.com",
-//            "id": null,
-//            "login": "string",
-//            "name": "string",
-//            "password": "string"
+//        "email":"string@mail.com",
+//            "id":null,
+//            "login":"string",
+//            "name":"string",
+//            "password":"string",
+//            "ip" :"192.168.1.1"
 //    }
 
 

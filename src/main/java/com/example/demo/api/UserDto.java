@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.validation.IpAddress;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,4 +42,9 @@ public class UserDto {
     @Null(groups = {UpdateName.class})
     @Email(groups = {New.class})
     private String email;
+
+    @IpAddress(groups = {New.class, UpdateName.class})
+    @Null(groups = {UpdateName.class})
+    @NotNull(groups = {New.class})
+    private String ip;
 }

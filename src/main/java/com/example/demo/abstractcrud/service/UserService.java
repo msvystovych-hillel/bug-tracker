@@ -18,6 +18,6 @@ public class UserService extends AbstractService<User, UserRepository> {
     @Override
     public Optional<User> save(User entity) {
         log.info("UserService.save() invoked");
-        return Optional.empty();
+        return Optional.of(repository.save(entity));
     }
 }

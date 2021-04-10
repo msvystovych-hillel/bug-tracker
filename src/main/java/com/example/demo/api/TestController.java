@@ -2,7 +2,7 @@ package com.example.demo.api;
 
 import com.example.demo.aop.SomeService;
 import com.example.demo.model.Role;
-import com.example.demo.model.User;
+import com.example.demo.model.OldUser;
 import com.example.demo.repository.TestJpaRepository;
 import com.example.demo.spring1.TestApplicationContext;
 import io.swagger.annotations.ApiOperation;
@@ -36,7 +36,7 @@ public class TestController {
             @ApiResponse(code = 415, message = "The content type is unsupported"),
             @ApiResponse(code = 500, message = "An unexpected error has occurred. The error has been logged and is being investigated.")})
     @GetMapping("/test")
-    public List<User> test() {
+    public List<OldUser> test() {
         return testJpaRepository.getAllUsers();
     }
 

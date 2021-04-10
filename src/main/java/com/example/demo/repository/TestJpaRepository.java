@@ -3,7 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.exception.AbstractEntityExistsException;
 import com.example.demo.exception.AbstractNotFoundException;
 import com.example.demo.model.Role;
-import com.example.demo.model.User;
+import com.example.demo.model.OldUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,8 +19,8 @@ public class TestJpaRepository {
     EntityManager entityManager;
 
     @Transactional
-    public List<User> getAllUsers() {
-        TypedQuery<User> fromUser = entityManager.createQuery("from User", User.class);
+    public List<OldUser> getAllUsers() {
+        TypedQuery<OldUser> fromUser = entityManager.createQuery("from User", OldUser.class);
         fromUser.setLockMode(LockModeType.PESSIMISTIC_WRITE);
         return fromUser.getResultList();
     }
@@ -34,7 +34,7 @@ public class TestJpaRepository {
 
     @Transactional
     public void saveUser() {
-        User userToCreate = new User();
+        OldUser userToCreate = new OldUser();
         userToCreate.setName("New User");
         Role role = entityManager.find(Role.class, 1L);
         userToCreate.setRole(role);

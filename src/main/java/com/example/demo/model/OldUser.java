@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "user")
-public class User {
+public class OldUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

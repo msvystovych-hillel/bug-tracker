@@ -23,7 +23,7 @@ public class UserDto {
     interface UpdateName extends Exist {
     }
 
-    @Null(groups = {New.class})
+    @Null(message = "id must be null", groups = {New.class})
     @NotNull(groups = {UpdateName.class})
     private Long id;
 

@@ -13,11 +13,10 @@ public class TestSpringDataController {
     @Autowired
     private UserDataJpaRepository userDataJpaRepository;
 
-
-
     @GetMapping("/old-user")
     public OldUser testGetUser() {
-        return userDataJpaRepository.findByName("Bob");
+//        return userDataJpaRepository.findByName("Bob");
+        return userDataJpaRepository.getByName("Bob");
     }
 
     @GetMapping("/old-user-native")
@@ -28,5 +27,10 @@ public class TestSpringDataController {
     @GetMapping("/old-users")
     public List<OldUser> testAllUsers() {
         return userDataJpaRepository.findAllByOrderByIdDesc();
+    }
+
+    @GetMapping("/old-users-all-by-id")
+    public List<OldUser> testAllUsersAllById() {
+        return (List<OldUser>) userDataJpaRepository.findAllById(List.of(18L, 19L));
     }
 }

@@ -55,12 +55,10 @@ public class MySQLAutoconfiguration {
         return dataSource;
     }
 
-//    @ConditionalOnProperty(
-//            name = "usemysql",
-//            havingValue = "local")
+
 //    @Conditional(MySQLDatabaseTypeCondition.class)
-//    @Profile("localMySqlProfile")
-//    @DatabaseType("MYSQL-LOCAL")
+//
+//
 
 
 }

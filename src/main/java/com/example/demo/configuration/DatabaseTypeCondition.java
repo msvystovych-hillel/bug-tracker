@@ -12,7 +12,7 @@ public class DatabaseTypeCondition implements Condition {
                            AnnotatedTypeMetadata metadata) {
         Map<String, Object> attributes = metadata.getAnnotationAttributes(DatabaseType.class.getName());
         String type = (String) attributes.get("value");
-        String enabledDBType = System.getProperty("dbType", "MYSQL-LOCAL");
-        return (enabledDBType != null && enabledDBType.equalsIgnoreCase(type));
+        String enabledDBType = System.getProperty("dbType", "NO-DATABASE");
+        return (enabledDBType != null && type != null && enabledDBType.equalsIgnoreCase(type));
     }
 }

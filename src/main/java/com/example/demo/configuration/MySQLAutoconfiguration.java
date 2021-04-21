@@ -54,11 +54,4 @@ public class MySQLAutoconfiguration {
 
         return dataSource;
     }
-
-
-//    @Conditional(MySQLDatabaseTypeCondition.class)
-//
-//
-
-
 }

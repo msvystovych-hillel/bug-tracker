@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -16,38 +18,37 @@ import javax.sql.DataSource;
 @ConditionalOnClass(DataSource.class)
 @Slf4j
 public class MySQLAutoconfiguration {
-//    @Bean
-//    @ConditionalOnBean(name = "dataSourceLocalDependingOnVariable")
-//    @ConditionalOnMissingBean
-//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-//        LocalContainerEntityManagerFactoryBean em
-//                = new LocalContainerEntityManagerFactoryBean();
-//        em.setDataSource(dataSourceLocalDependingOnVariable());
-//        em.setPackagesToScan("com.example.demo");
-//        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-////        if (additionalProperties() != null) {
-////            em.setJpaProperties(additionalProperties());
-////        }
-//        return em;
-//    }
+    @Bean
+    @ConditionalOnBean(name = "dataSourceLocalDependingOnVariable")
+    @ConditionalOnMissingBean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        log.info("----------Creating entityManagerFactory from MySQLAutoconfiguration");
+        LocalContainerEntityManagerFactoryBean em
+                = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSourceLocalDependingOnVariable());
+        em.setPackagesToScan("com.example.demo");
+        em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        return em;
+    }
 
     @Bean
-    @ConditionalOnMissingBean(type = "JpaTransactionManager")
+    @ConditionalOnMissingBean(type = "jpaTransactionManager")
     JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        log.info("----------Creating transactionManager from MySQLAutoconfiguration");
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
 
-    @Bean
-//    @ConditionalOnProperty(
+
+    //    @ConditionalOnProperty(
 //            name = "usemysql",
 //            havingValue = "local")
-
+    @Bean
     @ConditionalOnBean(name = "dataSource")
     @ConditionalOnMissingBean
     public DataSource dataSourceLocalDependingOnVariable() {
-        log.info("Loaded a custom data source from MySQLAutoconfiguration");
+        log.info("----------Loaded a custom data source from MySQLAutoconfiguration");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");

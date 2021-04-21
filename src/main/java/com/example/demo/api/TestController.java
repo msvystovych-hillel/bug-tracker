@@ -1,8 +1,8 @@
 package com.example.demo.api;
 
 import com.example.demo.aop.SomeService;
-import com.example.demo.model.Role;
 import com.example.demo.model.OldUser;
+import com.example.demo.model.Role;
 import com.example.demo.repository.TestJpaRepository;
 import com.example.demo.spring1.TestApplicationContext;
 import io.swagger.annotations.ApiOperation;

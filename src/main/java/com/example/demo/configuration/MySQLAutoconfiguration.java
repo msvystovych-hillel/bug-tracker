@@ -19,13 +19,13 @@ import javax.sql.DataSource;
 @Slf4j
 public class MySQLAutoconfiguration {
     @Bean
-    @ConditionalOnBean(name = "dataSourceLocalDependingOnVariable")
+    @ConditionalOnBean(name = "spareDataSource")
     @ConditionalOnMissingBean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         log.info("----------Creating entityManagerFactory from MySQLAutoconfiguration");
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSourceLocalDependingOnVariable());
+        em.setDataSource(spareDataSource());
         em.setPackagesToScan("com.example.demo");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
@@ -47,8 +47,8 @@ public class MySQLAutoconfiguration {
     @Bean
     @ConditionalOnBean(name = "dataSource")
     @ConditionalOnMissingBean
-    public DataSource dataSourceLocalDependingOnVariable() {
-        log.info("----------Loaded a custom data source from MySQLAutoconfiguration");
+    public DataSource spareDataSource() {
+        log.info("----------Loaded spareDataSource from MySQLAutoconfiguration");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");

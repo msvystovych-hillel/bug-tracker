@@ -40,10 +40,6 @@ public class MySQLAutoconfiguration {
         return transactionManager;
     }
 
-
-    //    @ConditionalOnProperty(
-//            name = "usemysql",
-//            havingValue = "local")
     @Bean
     @ConditionalOnBean(name = "dataSource")
     @ConditionalOnMissingBean
@@ -59,43 +55,12 @@ public class MySQLAutoconfiguration {
         return dataSource;
     }
 
-//    @Bean
-//    @Profile("localMySqlProfile")
-//    public DataSource dataSourceLocalDependingOnProfile() {
-//        log.info("Loaded a custom data source from MySQLAutoconfiguration for profile localMySqlProfile");
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("my-secret-pw");
-//
-//        return dataSource;
-//    }
-
+//    @ConditionalOnProperty(
+//            name = "usemysql",
+//            havingValue = "local")
 //    @Conditional(MySQLDatabaseTypeCondition.class)
-//    public DataSource dataSourceLocalDependingOnCustomCondition() {
-//        log.info("Loaded a custom data source from MySQLAutoconfiguration dataSourceLocalDependingOnCustomCondition()");
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("my-secret-pw");
-//
-//        return dataSource;
-//    }
-
+//    @Profile("localMySqlProfile")
 //    @DatabaseType("MYSQL-LOCAL")
-//    public DataSource dataSourceLocalDependingOnCustomAnnotation() {
-//        log.info("Loaded a custom data source from MySQLAutoconfiguration dataSourceLocalDependingOnCustomAnnotation()");
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/testDB?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("my-secret-pw");
-//
-//        return dataSource;
-//    }
+
+
 }

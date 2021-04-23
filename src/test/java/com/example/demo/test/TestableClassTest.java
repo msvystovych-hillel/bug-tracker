@@ -13,6 +13,8 @@ import org.mockito.quality.Strictness;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
 
 @ExtendWith(MockitoExtension.class)
@@ -59,5 +61,17 @@ class TestableClassTest {
                 .thenReturn("dataItem");
 
         Assertions.assertEquals("dataItem", dataServiceMock.getDataById("idValueidValueidValue"));
+    }
+
+    @Test
+    public void test5() {
+        Mockito.when(dataServiceMock.getDataById(eq("invalidId")))
+                .thenThrow(new IllegalArgumentException());
+
+
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> dataServiceMock.getDataById("invalidId"));
+
+        assertNotNull(exception);
     }
 }

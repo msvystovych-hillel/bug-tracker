@@ -99,4 +99,15 @@ class TestableClassTest {
 
         assertEquals("dataItemA", result.get(0));
     }
+
+    @Test
+    public void test7() {
+        Mockito.when(dataServiceMock.getDataById(ArgumentMatchers.any()))
+                .thenReturn("dataItem");
+
+        String result = dataServiceMock.getDataById("test");
+
+        Mockito.verify(dataServiceMock, Mockito.times(1))
+                .getDataById(Mockito.any());
+    }
 }

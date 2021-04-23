@@ -51,4 +51,13 @@ class TestableClassTest {
                 .thenReturn("dataItem");
         Assertions.assertEquals("dataItem", dataServiceMock.getDataById("idValue"));
     }
+
+    @Test
+    public void test4() {
+        Mockito.when(dataServiceMock.getDataById(
+                Mockito.argThat(arg -> arg == null || arg.length() > 5)))
+                .thenReturn("dataItem");
+
+        Assertions.assertEquals("dataItem", dataServiceMock.getDataById("idValueidValueidValue"));
+    }
 }

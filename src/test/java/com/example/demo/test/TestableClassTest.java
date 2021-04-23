@@ -11,8 +11,11 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
@@ -51,7 +54,7 @@ class TestableClassTest {
     public void test3() {
         Mockito.when(dataServiceMock.getDataById(eq("idValue")))
                 .thenReturn("dataItem");
-        Assertions.assertEquals("dataItem", dataServiceMock.getDataById("idValue"));
+        assertEquals("dataItem", dataServiceMock.getDataById("idValue"));
     }
 
     @Test
@@ -60,7 +63,7 @@ class TestableClassTest {
                 Mockito.argThat(arg -> arg == null || arg.length() > 5)))
                 .thenReturn("dataItem");
 
-        Assertions.assertEquals("dataItem", dataServiceMock.getDataById("idValueidValueidValue"));
+        assertEquals("dataItem", dataServiceMock.getDataById("idValueidValueidValue"));
     }
 
     @Test
@@ -73,5 +76,27 @@ class TestableClassTest {
                 () -> dataServiceMock.getDataById("invalidId"));
 
         assertNotNull(exception);
+    }
+
+    @Test
+    public void test6() {
+        Mockito.when(dataServiceMock.getDataListByIds(Mockito.any()))
+                .thenAnswer(invocation -> invocation
+                        .<List<String>>getArgument(0).stream()
+                        .map(id -> {
+                            switch (id) {
+                                case "a":
+                                    return "dataItemA";
+                                case "b":
+                                    return "dataItemB";
+                                default:
+                                    return null;
+                            }
+                        })
+                        .collect(Collectors.toList()));
+
+        List<String> result = dataServiceMock.getDataListByIds(Collections.singletonList("a"));
+
+        assertEquals("dataItemA", result.get(0));
     }
 }

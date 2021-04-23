@@ -13,6 +13,8 @@ import org.mockito.quality.Strictness;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.eq;
+
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 class TestableClassTest {
@@ -41,5 +43,12 @@ class TestableClassTest {
         Mockito.when(dataServiceMock.getDataById(ArgumentMatchers.any()))
                 .thenReturn("dataItem");
         Assertions.assertNotNull(dataServiceMock.getDataById("f"));
+    }
+
+    @Test
+    public void test3() {
+        Mockito.when(dataServiceMock.getDataById(eq("idValue")))
+                .thenReturn("dataItem");
+        Assertions.assertEquals("dataItem", dataServiceMock.getDataById("idValue"));
     }
 }

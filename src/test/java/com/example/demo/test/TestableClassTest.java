@@ -3,6 +3,7 @@ package com.example.demo.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InOrder;
 import org.mockito.Mock;
@@ -13,10 +14,12 @@ import org.mockito.quality.Strictness;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
@@ -123,5 +126,19 @@ class TestableClassTest {
         String result2 = dataServiceMock.getDataById("test1");
 
         inOrder.verify(dataServiceMock, times(2)).getDataById(ArgumentMatchers.any());
+    }
+
+    @Test
+    public void test9() {
+        DataSearchRequest request = new DataSearchRequest("idValue", new Date(System.currentTimeMillis()), 50);
+        dataServiceMock.getDataByRequest(request);
+
+        ArgumentCaptor<DataSearchRequest> requestCaptor = ArgumentCaptor.forClass(DataSearchRequest.class);
+        Mockito.verify(dataServiceMock).getDataByRequest(requestCaptor.capture());
+
+        assertFalse(requestCaptor.getAllValues().isEmpty());
+        DataSearchRequest capturedArgument = requestCaptor.getValue();
+        assertNotNull(capturedArgument.getId());
+        assertEquals(capturedArgument.getId(), "idValue");
     }
 }

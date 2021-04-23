@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
@@ -107,7 +109,19 @@ class TestableClassTest {
 
         String result = dataServiceMock.getDataById("test");
 
-        Mockito.verify(dataServiceMock, Mockito.times(1))
+        Mockito.verify(dataServiceMock, times(1))
                 .getDataById(Mockito.any());
+    }
+
+    @Test
+    public void test8() {
+        InOrder inOrder = Mockito.inOrder(dataServiceMock);
+        Mockito.when(dataServiceMock.getDataById(ArgumentMatchers.any()))
+                .thenReturn("dataItem");
+
+        String result1 = dataServiceMock.getDataById("test");
+        String result2 = dataServiceMock.getDataById("test1");
+
+        inOrder.verify(dataServiceMock, times(2)).getDataById(ArgumentMatchers.any());
     }
 }

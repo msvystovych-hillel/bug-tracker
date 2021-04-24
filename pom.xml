@@ -97,6 +97,7 @@
 
         </plugins>
     </build>
+<!--    -Dspring.profiles.active=local-->
     <profiles>
         <profile>
             <id>default</id>

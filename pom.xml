@@ -5,8 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.3</version>
-        <relativePath/>
+        <version>2.3.4.RELEASE</version>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>bug-tracker</artifactId>
@@ -97,7 +96,7 @@
 
         </plugins>
     </build>
-<!--    -Dspring.profiles.active=local-->
+    <!--    -Dspring.profiles.active=local-->
     <profiles>
         <profile>
             <id>default</id>
@@ -115,15 +114,6 @@
             </activation>
             <properties>
                 <spring.profiles.active>local</spring.profiles.active>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <spring.profiles.active>test</spring.profiles.active>
             </properties>
         </profile>
     </profiles>

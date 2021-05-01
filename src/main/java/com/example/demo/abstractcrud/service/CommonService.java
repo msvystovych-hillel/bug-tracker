@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface CommonService<E extends AbstractEntity> {
     Optional<E> save(E entity);
+    Optional<Iterable<E>> getAll();
 }

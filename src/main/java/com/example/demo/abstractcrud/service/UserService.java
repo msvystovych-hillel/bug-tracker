@@ -20,4 +20,11 @@ public class UserService extends AbstractService<User, UserRepository> {
         log.info("UserService.save() invoked");
         return Optional.of(repository.save(entity));
     }
+
+    @Override
+    public Optional<Iterable<User>> getAll() {
+        return Optional.of(repository.findAll());
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.abstractcrud.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,6 +9,9 @@ import java.util.List;
 
 @RestController
 public class TestableController {
+
+    @Autowired
+    public UserService userService;
 
     @GetMapping("/test1")
     public String test1() {
@@ -23,4 +28,8 @@ public class TestableController {
         return List.of(new IdNamePair("1", "John"), new IdNamePair("2", "Bob"));
     }
 
+    @GetMapping("/test4")
+    public List<IdNamePair> test4() {
+        return userService.getAllStubData();
+    }
 }

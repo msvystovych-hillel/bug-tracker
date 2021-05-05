@@ -2,9 +2,11 @@ package com.example.demo.abstractcrud.service;
 
 import com.example.demo.abstractcrud.model.User;
 import com.example.demo.abstractcrud.repository.UserRepository;
+import com.example.demo.controller.IdNamePair;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,5 +28,7 @@ public class UserService extends AbstractService<User, UserRepository> {
         return Optional.of(repository.findAll());
     }
 
-
+    public List<IdNamePair> getAllStubData() {
+        return List.of(new IdNamePair("1", "John"), new IdNamePair("2", "Bob"));
+    }
 }

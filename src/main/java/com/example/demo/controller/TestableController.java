@@ -10,4 +10,10 @@ public class TestableController {
     public String test1() {
         return "OK";
     }
+
+    @GetMapping("/test2")
+    public IdNamePair test2() {
+        return new IdNamePair("1", "John");
+    }
+
 }

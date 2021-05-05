@@ -41,4 +41,16 @@ public class TestableControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    public void test3() throws Exception {
+        mvc.perform(MockMvcRequestBuilders
+                .get("/test3")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value("2"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("Bob"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
 }

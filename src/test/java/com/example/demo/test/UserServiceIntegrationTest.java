@@ -17,7 +17,7 @@ import java.util.Optional;
 //        DbUnitTestExecutionListener.class
 //})
 @Slf4j
-class UserServiceIntegrationTest extends AbstractIntegrationTest {
+public class UserServiceIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired
     private UserService userService;

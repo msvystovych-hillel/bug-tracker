@@ -69,6 +69,7 @@ public class TestableControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
         verify(userService).getAllStubData();
+//        verify(userService, never()).getAllStubData();
     }
 
 }

@@ -29,6 +29,7 @@ public class UserService extends AbstractService<User, UserRepository> {
     }
 
     public List<IdNamePair> getAllStubData() {
+        Iterable<User> all = repository.findAll();
         return List.of(new IdNamePair("1", "John"), new IdNamePair("2", "Bob"));
     }
 }

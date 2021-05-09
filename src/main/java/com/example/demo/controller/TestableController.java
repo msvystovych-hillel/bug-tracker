@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.abstractcrud.model.User;
-import com.example.demo.abstractcrud.service.UserService;
+import com.example.demo.abstractcrud.service.UserServiceFromAbstract;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class TestableController {
 
     @Autowired
-    public UserService userService;
+    public UserServiceFromAbstract userService;
 
     @GetMapping("/test1")
     public String test1() {

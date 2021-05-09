@@ -11,9 +11,9 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class UserService extends AbstractService<User, UserRepository> {
+public class UserServiceFromAbstract extends AbstractService<User, UserRepository> {
 
-    public UserService(UserRepository repository) {
+    public UserServiceFromAbstract(UserRepository repository) {
         super(repository);
     }
 

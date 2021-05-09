@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.abstractcrud.repository.UserRepository;
-import com.example.demo.abstractcrud.service.UserService;
+import com.example.demo.abstractcrud.service.UserServiceFromAbstract;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ public class TestableController2Test {
     private MockMvc mvc;
 
     @SpyBean
-    private UserService userService;
+    private UserServiceFromAbstract userService;
 
     @MockBean
     private UserRepository userRepository;

@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.abstractcrud.service.UserService;
+import com.example.demo.abstractcrud.service.UserServiceFromAbstract;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class TestableControllerTest {
     private MockMvc mvc;
 
     @MockBean
-    private UserService userService;
+    private UserServiceFromAbstract userService;
 
     @Test
     public void test1() throws Exception {

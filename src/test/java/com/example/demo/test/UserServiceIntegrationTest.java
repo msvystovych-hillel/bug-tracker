@@ -1,7 +1,7 @@
 package com.example.demo.test;
 
 import com.example.demo.abstractcrud.model.User;
-import com.example.demo.abstractcrud.service.UserService;
+import com.example.demo.abstractcrud.service.UserServiceFromAbstract;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class UserServiceIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired
-    private UserService userService;
+    private UserServiceFromAbstract userService;
 
     @Test
     void testGetAllUsers() {
